@@ -101,4 +101,67 @@ def Q10():
  print("Number of elements:", len(data))  # automatically calculated
  print("Mean:", mean)
  print("Variance:", variance)
-Q9()
+
+def Q12():
+ import numpy as np
+ import matplotlib.pyplot as plt
+ from scipy.stats import binom
+ # Number of experments
+ n = 10
+ k = np.arange(0, n + 1)
+# Different values of probability p
+ p_values = [0.1, 0.4, 0.7]
+ # PMF 
+ plt.figure()
+ colors = ['r', 'g', 'b']  
+ for i, p in enumerate(p_values):
+    pmf = binom.pmf(k, n, p)
+    plt.stem(k, pmf, linefmt=colors[i]+'-', markerfmt=colors[i]+'o', basefmt=' ')
+
+ plt.xlabel('k (number of successes)')
+ plt.ylabel('PMF')
+ plt.title('Binomial PMF for different values of p')
+ plt.legend([f'p={p}' for p in p_values])
+ plt.show()
+ #CDF
+ plt.figure()
+ for p in p_values:
+    cdf = binom.cdf(k, n, p)
+    plt.step(k, cdf, label=f'p = {p}', where='post')
+
+ plt.xlabel('k (number of successes)')
+ plt.ylabel('CDF')
+ plt.title('Binomial CDF for different values of p')
+ plt.legend()
+ plt.show()
+
+def Q14():
+ import numpy as np
+ import matplotlib.pyplot as plt
+ from scipy.stats import binom
+ # Parameters
+ n = 5        # number of experiments
+ p = 1/6      # probability of success (getting a 6)
+ # Possible values of Z
+ Z = np.arange(0, n+1)
+ # Probability Mass Function (PMF)
+ pmf = binom.pmf(Z, n, p)
+ # Cumulative Distribution Function (CDF)
+ cdf = binom.cdf(Z, n, p)
+ # Plot PMF
+ plt.figure()
+ plt.bar(Z, pmf, color='skyblue')
+ plt.xlabel('Number of 6s (Z)')
+ plt.ylabel('Probability')
+ plt.title('Probability Mass Function (PMF) of Z')
+ plt.show()
+ # Plot CDF
+ plt.figure()
+ plt.step(Z, cdf, where='post', linewidth=2)
+ plt.xlabel('Number of 6s (Z)')
+ plt.ylabel('Cumulative Probability')
+ plt.title('Cumulative Distribution Function (CDF) of Z')
+ plt.grid(True)
+ plt.show()
+Q14()
+  
