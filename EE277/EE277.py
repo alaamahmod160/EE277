@@ -136,6 +136,7 @@ def Q12():
  plt.show()
 
 def Q14():
+
  import numpy as np
  import matplotlib.pyplot as plt
  from scipy.stats import binom
@@ -163,5 +164,25 @@ def Q14():
  plt.title('Cumulative Distribution Function (CDF) of Z')
  plt.grid(True)
  plt.show()
-Q14()
-  
+def Q16():
+ import numpy as np
+ import matplotlib.pyplot as plt
+
+ # 1) Generate random data
+ np.random.seed(0)  # for reproducibility
+ X = np.random.rand(50) * 10   # 50 random values between 0 and 10
+ Y = 2 * X + np.random.randn(50) * 5  # approximate linear relation with noise
+
+ # 2) Create scatter plot
+ plt.scatter(X, Y, color='blue')
+ plt.title('Scatter Plot of X vs Y')
+ plt.xlabel('X')
+ plt.ylabel('Y')
+ plt.grid(True)
+ plt.show()
+
+ # 3) Compute correlation coefficient
+ corr_matrix = np.corrcoef(X, Y)  # correlation matrix
+ corr_XY = corr_matrix[0, 1]      # correlation coefficient between X and Y
+ print(f"Correlation coefficient between X and Y: {corr_XY:.2f}")
+Q16()
